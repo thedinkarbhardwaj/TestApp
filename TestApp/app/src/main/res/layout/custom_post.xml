@@ -11,4 +11,17 @@
         android:textSize="@dimen/_20ssp"
         android:text="Testttt"/>
 
+    <ImageView
+        android:id="@+id/like"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/baseline_heart_broken_24"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:background="@color/black"/>
+
 </LinearLayout>

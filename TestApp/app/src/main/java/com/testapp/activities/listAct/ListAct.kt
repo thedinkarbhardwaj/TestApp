@@ -1,10 +1,14 @@
 package com.testapp.activities.listAct
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.testapp.databinding.ActivityListBinding
+import com.testapp.roomDB.PostDatabase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ListAct : AppCompatActivity() {
 
@@ -37,6 +41,15 @@ class ListAct : AppCompatActivity() {
 
         })
 
+
+        GlobalScope.launch {
+
+            var dbbb= PostDatabase.getInstance(this@ListAct).postDao().getAllPosts()
+
+            Log.d("ListOfPPost",dbbb.toString())
+
+        }
+
     }
 
     private fun recyclerView(posts: List<Post>) {
@@ -45,7 +58,7 @@ class ListAct : AppCompatActivity() {
         lay.orientation = LinearLayoutManager.VERTICAL
 
 binding.recPost.layoutManager = lay
-        binding.recPost.adapter = PostAdpt(posts)
+        binding.recPost.adapter = PostAdpt(this@ListAct,posts)
 
     }
 }
